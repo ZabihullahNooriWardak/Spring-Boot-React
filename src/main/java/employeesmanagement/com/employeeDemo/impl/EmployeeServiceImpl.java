@@ -1,5 +1,7 @@
 package employeesmanagement.com.employeeDemo.impl;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import employeesmanagement.com.employeeDemo.dto.EmployeeDto;
@@ -22,6 +24,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.save(savedEmployee);
 
         return EmployeeMapper.employeeEntityToDto(employee);
+
+    }
+
+    @Override
+    public EmployeeDto getEmployee(Long id) {
+        Employee employee=null;
+        try{
+
+        
+        employee =  employeeRepository.findById(id).orElseThrow(() -> new Exception());
+        }catch(Exception e){
+            System.err.println(e);
+        }
+       return EmployeeMapper.employeeEntityToDto(employee);
 
     }
 
