@@ -29,16 +29,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto getEmployee(Long id) {
-        Employee employee=null;
+        Employee employee = null;
         try{
-
-        
-        employee =  employeeRepository.findById(id).orElseThrow(() -> new Exception());
+            employee = employeeRepository.findById(id).orElseThrow(() -> new Exception());
         }catch(Exception e){
             System.err.println(e);
         }
-       return EmployeeMapper.employeeEntityToDto(employee);
-
+        return EmployeeMapper.employeeEntityToDto(employee);
     }
 
 }
