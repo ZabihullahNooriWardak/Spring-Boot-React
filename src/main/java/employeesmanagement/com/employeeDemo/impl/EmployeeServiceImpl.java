@@ -30,12 +30,27 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDto getEmployee(Long id) {
         Employee employee = null;
-        try{
+        try {
             employee = employeeRepository.findById(id).orElseThrow(() -> new Exception());
-        }catch(Exception e){
+        } catch (Exception e) {
             System.err.println(e);
         }
         return EmployeeMapper.employeeEntityToDto(employee);
+    }
+
+    @Override
+    public EmployeeDto updateEmployee(EmployeeDto employeeDto, Long id) {
+        Employee employee = null;
+        try {
+            employee = employeeRepository.findById(id).orElseThrow(() -> new Exception());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        employee.setName(employeeDto.getName());
+        employee.setEmail(employeeDto.getEmail());
+        employee.setLastName(employeeDto.getLastName());
+        return EmployeeMapper.employeeEntityToDto(employeeRepository.save(employee));
+
     }
 
 }
