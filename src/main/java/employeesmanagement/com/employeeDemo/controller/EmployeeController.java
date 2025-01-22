@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/employee")
@@ -31,6 +32,13 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("id") Long id) {
         EmployeeDto employee = employeeServiceImpl.getEmployee(id);
         return ResponseEntity.ok(employee);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDto employee) {
+
+        return ResponseEntity.ok(employeeServiceImpl.updateEmployee(employee, id));
+
     }
 
 }

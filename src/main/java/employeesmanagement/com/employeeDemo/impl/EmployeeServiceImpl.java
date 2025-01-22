@@ -1,9 +1,6 @@
 package employeesmanagement.com.employeeDemo.impl;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
-
 import employeesmanagement.com.employeeDemo.dto.EmployeeDto;
 import employeesmanagement.com.employeeDemo.entity.Employee;
 import employeesmanagement.com.employeeDemo.mapper.EmployeeMapper;
