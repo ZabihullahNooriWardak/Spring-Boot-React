@@ -52,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployee(Long id) {
-       employeeRepository.deleteById(id);
+        employeeRepository.deleteById(id);
     }
 
 }
