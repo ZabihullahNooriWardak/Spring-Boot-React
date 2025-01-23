@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import employeesmanagement.com.employeeDemo.dto.EmployeeDto;
-import employeesmanagement.com.employeeDemo.entity.Employee;
 import employeesmanagement.com.employeeDemo.impl.EmployeeServiceImpl;
 import lombok.AllArgsConstructor;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
@@ -39,6 +39,12 @@ public class EmployeeController {
 
         return ResponseEntity.ok(employeeServiceImpl.updateEmployee(employee, id));
 
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteEmployee(@PathVariable Long id){
+         employeeServiceImpl.deleteEmployee(id);
+        return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

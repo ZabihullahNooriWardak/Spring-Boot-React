@@ -6,4 +6,5 @@ public interface EmployeeService {
     EmployeeDto createEmployee(EmployeeDto employeeDto);
     EmployeeDto getEmployee(Long id);
     EmployeeDto updateEmployee(EmployeeDto employeeDto,Long id);
+    void deleteEmployee(Long id);
 }
