@@ -1,5 +1,7 @@
 package employeesmanagement.com.employeeDemo.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class EmployeeController {
     EmployeeServiceImpl employeeServiceImpl;
 
+    @GetMapping
+    public List<EmployeeDto> getAllEmployees() {
+
+        return employeeServiceImpl.getAllEmployee();
+    }
+
     @PostMapping
     public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto) {
         EmployeeDto employeeDto2 = employeeServiceImpl.createEmployee(employeeDto);
@@ -42,9 +50,9 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteEmployee(@PathVariable Long id){
-         employeeServiceImpl.deleteEmployee(id);
-        return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity deleteEmployee(@PathVariable Long id) {
+        employeeServiceImpl.deleteEmployee(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

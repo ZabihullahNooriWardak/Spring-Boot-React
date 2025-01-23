@@ -1,5 +1,8 @@
 package employeesmanagement.com.employeeDemo.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import employeesmanagement.com.employeeDemo.dto.EmployeeDto;
 import employeesmanagement.com.employeeDemo.entity.Employee;
@@ -53,6 +56,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<EmployeeDto> getAllEmployee() {
+        List<EmployeeDto> newList = new ArrayList<>();
+
+        List<Employee> employees = employeeRepository.findAll();
+        for (int i = 0; i < employees.size(); i++) {
+            newList.add(EmployeeMapper.employeeEntityToDto(employees.get(i)));
+        }
+        return newList;
     }
 
 }
