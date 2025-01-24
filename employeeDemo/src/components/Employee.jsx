@@ -2,36 +2,45 @@ import React, { useEffect, useState } from "react";
 import { getAllEmployees } from "../service/employeeService";
 
 export function Employee() {
-   const [listofEmployee,setListofEmployee]=useState([]);
-   const fetchEmployees = async () => {
-    try {
-      const response = await getAllEmployees(); // Await the response from the service
-      setListofEmployee(response.data); // Update state with the resolved data
-    } catch (error) {
-      console.error("Error fetching employees:", error); // Handle errors
-    }
-  };
-   useEffect(()=>{
-     fetchEmployees();
-   },[])
+    const [listofEmployee, setListofEmployee] = useState([]);
+
+    const fetchEmployees = async () => {
+        try {
+            const response = await getAllEmployees();
+            console.log(response.data);
+            setListofEmployee(response.data);
+        } catch (error) {
+            console.error("Error fetching employees:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchEmployees();
+    }, []);
+
     return (
         <>
- <h1>All Employee page</h1>
-  {
-    listofEmployee.map(employee=>(
-        <div key={employee.id}>
-            <p>{employee.id}</p>
-           <p>{employee.name}</p>
-           <p>{employee.lastName}</p>
-           <p>{employee.email}</p>
-        </div>
-    ))
-  }
 
-
-
-
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">FirstName</th>
+                        <th scope="col">LastName</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {listofEmployee.map((employee) => (
+                        <tr key={employee.id}>
+                            <td>{employee.id}</td>
+                            <td>{employee.name}</td>
+                            <td>{employee.lastName}</td>
+                            <td>{employee.email}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </>
-
-    )
+    );
 }
