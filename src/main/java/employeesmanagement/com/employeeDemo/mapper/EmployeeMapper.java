@@ -14,7 +14,7 @@ public class EmployeeMapper {
     
 
     public static EmployeeDto employeeEntityToDto(Employee employee){
-        return new EmployeeDto(employee.getId(),employee.getEmail(),employee.getName(),employee.getLastName());
+        return new EmployeeDto(employee.getId(),employee.getName(),employee.getLastName(),employee.getEmail());
     }
     
 }
