@@ -9,28 +9,28 @@ export function EmployeeForm() {
     const navigator = useNavigate();
     const { id } = useParams();
     useEffect(() => {
-        getOneEmployee(id).then(res => {
-            setName(res.data.name);
-            setLastName(res.data.lastName);
-            setEmail(res.data.email);
-        })
+        if (id) {
+            getOneEmployee(id).then(res => {
+                setName(res.data.name);
+                setLastName(res.data.lastName);
+                setEmail(res.data.email);
+            })
+        }
     }, [id])
     function submitHandler(e) {
         e.preventDefault();
         let formValues = { name, lastName, email }
-      if(!id){
-        newEmployee(formValues).then((res) => {
-            navigator("/employees")
-            return res.data;
+        if (!id) {
+            newEmployee(formValues).then((res) => {
+                navigator("/employees")
+                return res.data;
 
-        });
-        setEmail("")
-        setName("")
-        setLastName("")
-      }else{
-        updateEmployee(id,formValues);
-        navigator("/employees");
-      }
+            });
+
+        } else {
+            updateEmployee(id, formValues);
+            navigator("/employees");
+        }
     }
 
     return (
