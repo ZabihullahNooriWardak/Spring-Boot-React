@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getOneEmployee, newEmployee } from "../service/employeeService";
+import { getOneEmployee, newEmployee, updateEmployee } from "../service/employeeService";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function EmployeeForm() {
@@ -7,20 +7,19 @@ export function EmployeeForm() {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const navigator = useNavigate();
-     const {id} = useParams();
-    useEffect(()=>{
-           getOneEmployee(id).then(res=>{
+    const { id } = useParams();
+    useEffect(() => {
+        getOneEmployee(id).then(res => {
             setName(res.data.name);
             setLastName(res.data.lastName);
             setEmail(res.data.email);
-           })
-    },[id])
+        })
+    }, [id])
     function submitHandler(e) {
         e.preventDefault();
         let formValues = { name, lastName, email }
-        console.log(formValues);
+      if(!id){
         newEmployee(formValues).then((res) => {
-            console.log("ooooooooooooooooo" + res + "ooooooooooooooooooo");
             navigator("/employees")
             return res.data;
 
@@ -28,6 +27,10 @@ export function EmployeeForm() {
         setEmail("")
         setName("")
         setLastName("")
+      }else{
+        updateEmployee(id,formValues);
+        navigator("/employees");
+      }
     }
 
     return (
