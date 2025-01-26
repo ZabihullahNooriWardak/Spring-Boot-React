@@ -17,7 +17,7 @@ export function EmployeeForm() {
             })
         }
     }, [id])
-    function submitHandler(e) {
+    async function submitHandler(e) {
         e.preventDefault();
         let formValues = { name, lastName, email }
         if (!id) {
@@ -28,15 +28,22 @@ export function EmployeeForm() {
             });
 
         } else {
-            updateEmployee(id, formValues);
+           await updateEmployee(id, formValues);
             navigator("/employees");
         }
     }
 
+function checkPage(){
+    if(id){
+        return <h1>Update Employee</h1>
+    }else {
+        return <h1>Create Employee</h1>
+    }
+}
     return (
         <>
 
-            <h1>Create Employee page </h1>
+            {checkPage()}
             <form className=" ">
                 <div className="form-group d-flex justify-content-center">
                     <label htmlFor="name">Name</label>
