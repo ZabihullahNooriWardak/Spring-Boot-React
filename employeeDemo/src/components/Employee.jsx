@@ -44,8 +44,8 @@ export function Employee() {
                             <td>{employee.name}</td>
                             <td>{employee.lastName}</td>
                             <td>{employee.email}</td>
-                            <td className="btn btn-secondary p-2 m-1" onClick={()=>updateHandler(employee.id)} >Update</td>
-                            <td className="btn btn-danger">Delete</td>
+                           <td><button className="btn btn-secondary " onClick={()=>updateHandler(employee.id)} >Update</button></td>
+                           <td> <button className="btn btn-danger">Delete </button></td>
                         </tr>
                     ))}
                 </tbody>
