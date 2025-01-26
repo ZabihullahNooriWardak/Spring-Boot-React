@@ -37,6 +37,8 @@ export function Employee() {
                             <td>{employee.name}</td>
                             <td>{employee.lastName}</td>
                             <td>{employee.email}</td>
+                            <td className="btn btn-secondary p-2 m-1" >Update</td>
+                            <td className="btn btn-danger">Delete</td>
                         </tr>
                     ))}
                 </tbody>
