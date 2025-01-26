@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { newEmployee } from "../service/employeeService";
 import { useNavigate } from "react-router-dom";
 
-export function CreateEmployee() {
+export function EmployeeForm() {
     const [name, setName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")

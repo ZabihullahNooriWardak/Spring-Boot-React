@@ -5,16 +5,17 @@ import './App.css'
 import { Employee } from './components/Employee'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { NavBar } from './components/NavBar'
-import { CreateEmployee } from './components/CreateEmployee'
+import { EmployeeForm } from './components/EmployeeForm'
 function App() {
 
   return (
     <BrowserRouter>
     <NavBar/>
       <Routes>
-        <Route path="/newEmployee" element={<CreateEmployee/>} />
+        <Route path="/" element={<Employee/>} />
+        <Route path="/newEmployee" element={<EmployeeForm/>} />
         <Route path="/employees" element={<Employee />} />
-        <Route path="/updateEmployee" element={<CreateEmployee/>} />
+        <Route path="/updateEmployee/:id" element={<EmployeeForm/>} />
       </Routes>
     </BrowserRouter>
 
