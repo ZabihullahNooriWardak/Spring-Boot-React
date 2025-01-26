@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getAllEmployees } from "../service/employeeService";
+import { deletEmployee, getAllEmployees } from "../service/employeeService";
 import { useNavigate } from "react-router-dom";
 
 export function Employee() {
     const [listofEmployee, setListofEmployee] = useState([]);
 
-  const navigator = useNavigate()
+    const navigator = useNavigate()
 
     const fetchEmployees = async () => {
         try {
@@ -17,8 +17,13 @@ export function Employee() {
         }
     };
 
-    function updateHandler(employeeId){
-          navigator(`/updateEmployee/${employeeId}`)
+    function updateHandler(employeeId) {
+        navigator(`/updateEmployee/${employeeId}`)
+    }
+
+     async function deleteHandler (id){
+       await deletEmployee(id);
+        await fetchEmployees();
     }
 
     useEffect(() => {
@@ -44,8 +49,8 @@ export function Employee() {
                             <td>{employee.name}</td>
                             <td>{employee.lastName}</td>
                             <td>{employee.email}</td>
-                           <td><button className="btn btn-secondary " onClick={()=>updateHandler(employee.id)} >Update</button></td>
-                           <td> <button className="btn btn-danger">Delete </button></td>
+                            <td><button className="btn btn-secondary " onClick={() => updateHandler(employee.id)} >Update</button></td>
+                            <td> <button className="btn btn-danger" onClick={() => { deleteHandler(employee.id) }}>Delete </button></td>
                         </tr>
                     ))}
                 </tbody>
