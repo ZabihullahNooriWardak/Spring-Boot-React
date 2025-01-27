@@ -61,7 +61,7 @@ function checkPage(){
                     <input name="email" className="form-control w-50 p-2 " id="email" type="email" placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 </div>
                 <br></br>
-                <button className="btn btn-success d-flex justify-content-start " onClick={(e) => submitHandler(e)}>Submit</button>
+                <button  style={{margin:"auto "}} className="btn btn-success d-flex  "onClick={(e) => submitHandler(e)}>Submit</button>
 
             </form>
 
