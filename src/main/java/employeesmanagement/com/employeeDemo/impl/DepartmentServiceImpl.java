@@ -41,8 +41,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public List<DepartmentDto> getAllDepartments() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllDepartments'");
+        List<Department> departments = departmentRepository.findAll();
+        List<DepartmentDto> departmentDtos = null;
+        for (int i = 0; i < departments.size(); i++) {
+            departmentDtos.add(DepartmentMapper.departmentEntityToDto(departments.get(i)));
+        }
+        return departmentDtos;
+
     }
 
     @Override
