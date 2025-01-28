@@ -42,8 +42,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentDto createDepartment(DepartmentDto departmentDto) {
         Department department = DepartmentMapper.departmentDtoToEntity(departmentDto);
-        departmentRepository.save(department);
-        return departmentDto;
+       Department department2 = departmentRepository.save(department);
+        return DepartmentMapper.departmentEntityToDto(department2) ;
 
     }
 
