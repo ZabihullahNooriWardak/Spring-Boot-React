@@ -59,8 +59,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void deleteDepartment(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteDepartment'");
+         departmentRepository.deleteById(id);
     }
 
 }
