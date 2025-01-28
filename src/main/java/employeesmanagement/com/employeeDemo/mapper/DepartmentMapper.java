@@ -5,11 +5,11 @@ import employeesmanagement.com.employeeDemo.entity.Department;
 
 public class DepartmentMapper {
 
-    public DepartmentDto departmentEntityToDto(Department department) {
+    public static DepartmentDto departmentEntityToDto(Department department) {
         return new DepartmentDto(department.getId(), department.getName(), department.getDescription());
     }
 
-    public Department departmentDtoToEntity(DepartmentDto departmentDto) {
+    public static Department departmentDtoToEntity(DepartmentDto departmentDto) {
         return new Department(departmentDto.getId(), departmentDto.getName(), departmentDto.getDescription());
     }
 }
