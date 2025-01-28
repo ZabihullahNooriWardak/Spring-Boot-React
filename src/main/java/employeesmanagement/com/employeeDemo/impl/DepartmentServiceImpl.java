@@ -26,9 +26,16 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public DepartmentDto updateDepartmentDto(DepartmentDto employeeDto, Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateDepartmentDto'");
+    public DepartmentDto updateDepartmentDto(DepartmentDto departmentDto, Long id) {
+        Department department = departmentRepository.findById(id).orElseThrow(() -> new RuntimeException());
+
+        department.setName(departmentDto.getName());
+        department.setDescription(departmentDto.getDescription());
+        departmentRepository.save(department);
+
+        Department department2 = departmentRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return DepartmentMapper.departmentEntityToDto(department2);
+
     }
 
     @Override
