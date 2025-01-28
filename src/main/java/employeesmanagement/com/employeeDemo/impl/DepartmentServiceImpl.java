@@ -2,6 +2,7 @@ package employeesmanagement.com.employeeDemo.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import employeesmanagement.com.employeeDemo.dto.DepartmentDto;
@@ -9,12 +10,12 @@ import employeesmanagement.com.employeeDemo.entity.Department;
 import employeesmanagement.com.employeeDemo.mapper.DepartmentMapper;
 import employeesmanagement.com.employeeDemo.repository.DepartmentRepository;
 import employeesmanagement.com.employeeDemo.service.DepartmentService;
-import lombok.AllArgsConstructor;
+
 
 @Service
-@AllArgsConstructor
-public class DepartmentServiceImpl implements DepartmentService {
 
+public class DepartmentServiceImpl implements DepartmentService {
+ @Autowired
     DepartmentRepository departmentRepository;
 
     @Override

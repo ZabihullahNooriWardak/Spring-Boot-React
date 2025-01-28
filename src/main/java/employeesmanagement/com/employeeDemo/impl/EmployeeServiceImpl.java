@@ -3,18 +3,18 @@ package employeesmanagement.com.employeeDemo.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import employeesmanagement.com.employeeDemo.dto.EmployeeDto;
 import employeesmanagement.com.employeeDemo.entity.Employee;
 import employeesmanagement.com.employeeDemo.mapper.EmployeeMapper;
 import employeesmanagement.com.employeeDemo.repository.EmployeeRepository;
 import employeesmanagement.com.employeeDemo.service.EmployeeService;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-
+        @Autowired
     EmployeeRepository employeeRepository;
 
     @Override
