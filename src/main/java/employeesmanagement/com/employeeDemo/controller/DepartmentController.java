@@ -10,6 +10,7 @@ import employeesmanagement.com.employeeDemo.mapper.DepartmentMapper;
 import lombok.AllArgsConstructor;
 
 import java.net.http.HttpResponse;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
+
 @RestController
 @RequestMapping("/api/departments")
 @CrossOrigin("*")
@@ -27,6 +30,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class DepartmentController {
     @Autowired
     DepartmentServiceImpl departmentServiceImpl;
+
+    @GetMapping
+    public ResponseEntity<List<DepartmentDto>> getAllDepartments() {
+       List<DepartmentDto> ls = departmentServiceImpl.getAllDepartments();
+        return new ResponseEntity<>(ls,HttpStatus.OK);
+    }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<DepartmentDto> getDepartment(@PathVariable Long id) {

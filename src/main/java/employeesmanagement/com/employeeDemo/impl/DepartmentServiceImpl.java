@@ -1,5 +1,6 @@
 package employeesmanagement.com.employeeDemo.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public List<DepartmentDto> getAllDepartments() {
         List<Department> departments = departmentRepository.findAll();
-        List<DepartmentDto> departmentDtos = null;
+        List<DepartmentDto> departmentDtos = new ArrayList<>();
         for (int i = 0; i < departments.size(); i++) {
             departmentDtos.add(DepartmentMapper.departmentEntityToDto(departments.get(i)));
         }
