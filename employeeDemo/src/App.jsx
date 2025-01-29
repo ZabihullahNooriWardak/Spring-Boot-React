@@ -7,12 +7,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { NavBar } from './components/NavBar'
 import { EmployeeForm } from './components/EmployeeForm'
 import { Department } from './components/Department'
+import { AddDepartment } from './components/AddDepartmentForm'
 function App() {
 
   return (
     <BrowserRouter>
     <NavBar/>
       <Routes>
+        <Route path='newDepartment' element={<AddDepartment/>}/>
         <Route path="/departments" element={<Department/>}/>
         <Route path="/" element={<Employee/>} />
         <Route path="/newEmployee" element={<EmployeeForm/>} />
