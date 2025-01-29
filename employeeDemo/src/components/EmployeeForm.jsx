@@ -28,18 +28,18 @@ export function EmployeeForm() {
             });
 
         } else {
-           await updateEmployee(id, formValues);
+            await updateEmployee(id, formValues);
             navigator("/employees");
         }
     }
 
-function checkPage(){
-    if(id){
-        return <h1>Update Employee</h1>
-    }else {
-        return <h1>Create Employee</h1>
+    function checkPage() {
+        if (id) {
+            return <h1>Update Employee</h1>
+        } else {
+            return <h1>Create Employee</h1>
+        }
     }
-}
     return (
         <>
 
@@ -61,7 +61,7 @@ function checkPage(){
                     <input name="email" className="form-control w-50 p-2 " id="email" type="email" placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 </div>
                 <br></br>
-                <button  style={{margin:"auto "}} className="btn btn-success d-flex  "onClick={(e) => submitHandler(e)}>Submit</button>
+                <button style={{ margin: "auto " }} className="btn btn-success d-flex  " onClick={(e) => submitHandler(e)}>Submit</button>
 
             </form>
 
