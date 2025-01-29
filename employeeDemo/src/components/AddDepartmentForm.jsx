@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { addnewDepartment } from "../service/departmentService";
+import { useNavigate } from "react-router-dom";
 
 export function AddDepartment() {
 
     const [departname, setDepartmentName] = useState([]);
     const [description, setDesciption] = useState([]);
+        const navigator = useNavigate()
     function clickHandler(e) {
         e.preventDefault();
-        let obj = { name: departname, description:description };
-          addnewDepartment(obj)
-    
+        let obj = { name: departname, description: description };
+        addnewDepartment(obj)
+        navigator("/departments")
+
     }
     return (<>
         <p>Adding department Form</p>
