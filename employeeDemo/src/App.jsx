@@ -6,12 +6,14 @@ import { Employee } from './components/Employee'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { NavBar } from './components/NavBar'
 import { EmployeeForm } from './components/EmployeeForm'
+import { Department } from './components/Department'
 function App() {
 
   return (
     <BrowserRouter>
     <NavBar/>
       <Routes>
+        <Route path="/departments" element={<Department/>}/>
         <Route path="/" element={<Employee/>} />
         <Route path="/newEmployee" element={<EmployeeForm/>} />
         <Route path="/employees" element={<Employee />} />

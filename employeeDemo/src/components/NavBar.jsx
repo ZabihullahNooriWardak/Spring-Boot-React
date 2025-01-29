@@ -15,7 +15,7 @@ export function NavBar() {
           <Link className="nav-link" to="/newEmployee">NewEmployee</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <Link className="nav-link" to="/departments">Department</Link>
           </li>
         </ul>
       </div>
