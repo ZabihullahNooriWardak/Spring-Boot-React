@@ -6,11 +6,11 @@ export function AddDepartment() {
 
     const [departname, setDepartmentName] = useState([]);
     const [description, setDesciption] = useState([]);
-        const navigator = useNavigate()
-    function clickHandler(e) {
+    const navigator = useNavigate()
+    async function clickHandler(e) {
         e.preventDefault();
         let obj = { name: departname, description: description };
-        addnewDepartment(obj)
+        await addnewDepartment(obj)
         navigator("/departments")
 
     }
