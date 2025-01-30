@@ -12,14 +12,16 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar/>
+      <NavBar />
       <Routes>
-        <Route path='newDepartment' element={<AddDepartment/>}/>
-        <Route path="/departments" element={<Department/>}/>
-        <Route path="/" element={<Employee/>} />
-        <Route path="/newEmployee" element={<EmployeeForm/>} />
+        <Route path='addDepartment' element={<AddDepartment />} />
+        <Route path="/departments" element={<Department />} />
+        <Route path="/" element={<Employee />} />
+        <Route path="/newEmployee" element={<EmployeeForm />} />
         <Route path="/employees" element={<Employee />} />
-        <Route path="/updateEmployee/:id" element={<EmployeeForm/>} />
+        <Route path="/updateEmployee/:id" element={<EmployeeForm />} />
+        <Route path='updateDepartment/:id' element={<AddDepartment />} />
+
       </Routes>
     </BrowserRouter>
 

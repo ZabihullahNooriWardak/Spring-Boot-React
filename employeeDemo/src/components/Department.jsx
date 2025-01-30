@@ -10,7 +10,7 @@ export function Department() {
     const navigator = useNavigate()
 
     useEffect(() => {
-fetchAllDepartments()
+        fetchAllDepartments()
     }, [])
 
     async function deleteHandler(id) {
@@ -18,22 +18,26 @@ fetchAllDepartments()
         await deleteDepartment(id)
         fetchAllDepartments()
     }
-   function fetchAllDepartments(){
+    function fetchAllDepartments() {
         getAllDepartment().then((res) => {
             console.log(res.data);
             setDepartment(res.data);
         })
     }
 
+    function updateHandler(id) {
+   navigator(`/updateDepartment/${id}`)
+    }
+
     return (<>
         <div>
-            <button><Link to="/newDepartment">Add department</Link> </button>
+            <button><Link to="/addDepartment">Add department</Link> </button>
             {department.map(department => (
                 <div key={department.id}>
                     <p>{department.id}</p>
                     <p>{department.name}</p>
                     <p>{department.description}</p>
-                    <button>update</button>
+                    <button onClick={() => updateHandler(department.id)}>update</button>
                     <button onClick={() => deleteHandler(department.id)}>delete</button>
                 </div>
             ))}

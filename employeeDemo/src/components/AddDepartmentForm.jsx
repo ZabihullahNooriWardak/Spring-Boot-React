@@ -1,12 +1,25 @@
-import React, { useState } from "react";
-import { addnewDepartment } from "../service/departmentService";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { addnewDepartment, getOneDepartment } from "../service/departmentService";
+import { useNavigate, useParams } from "react-router-dom";
 
 export function AddDepartment() {
 
     const [departname, setDepartmentName] = useState([]);
     const [description, setDesciption] = useState([]);
-    const navigator = useNavigate()
+    const { id } = useParams();
+    const navigator = useNavigate();
+    useEffect(() => {
+        if (id) {
+            getOneDepartment(id).then(res => {
+                setDepartmentName(res.data.name)
+                setDesciption(res.data.description)
+            })
+        } else {
+            setDepartmentName("")
+            setDesciption("")
+        }
+
+    }, [id])
     async function clickHandler(e) {
         e.preventDefault();
         let obj = { name: departname, description: description };
