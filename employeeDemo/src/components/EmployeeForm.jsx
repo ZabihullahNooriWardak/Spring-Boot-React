@@ -15,6 +15,10 @@ export function EmployeeForm() {
                 setLastName(res.data.lastName);
                 setEmail(res.data.email);
             })
+        } else {
+            setName("");
+            setEmail("");
+            setLastName("");
         }
     }, [id])
     async function submitHandler(e) {
