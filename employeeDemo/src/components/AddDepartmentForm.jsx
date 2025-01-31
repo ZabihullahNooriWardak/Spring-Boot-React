@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addnewDepartment, getOneDepartment } from "../service/departmentService";
+import { addnewDepartment, getOneDepartment, updateDepartment } from "../service/departmentService";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function AddDepartment() {
@@ -23,11 +23,16 @@ export function AddDepartment() {
     async function clickHandler(e) {
         e.preventDefault();
         let obj = { name: departname, description: description };
-        await addnewDepartment(obj).then(res => {
-            console.log(res.data)
-            console.log(res)
-        })
-        navigator("/departments")
+        if (id) {
+            await updateDepartment(id, obj);
+
+        } else {
+            await addnewDepartment(obj).then(res => {
+                console.log(res.data)
+                console.log(res)
+            })
+            navigator("/departments")
+        }
 
     }
     return (<>
