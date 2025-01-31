@@ -25,6 +25,7 @@ export function AddDepartment() {
         let obj = { name: departname, description: description };
         if (id) {
             await updateDepartment(id, obj);
+            navigator('/departments')
 
         } else {
             await addnewDepartment(obj).then(res => {
