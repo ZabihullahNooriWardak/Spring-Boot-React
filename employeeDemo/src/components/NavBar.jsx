@@ -19,7 +19,7 @@ export function NavBar() {
           </li>
           <li className="nav-item">
 
-            <Link className="nav-line" to="/addDepartment">Add department</Link>
+            <Link className="nav-link" to="/addDepartment">Add department</Link>
           </li>
         </ul>
       </div>

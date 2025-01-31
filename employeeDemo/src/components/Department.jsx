@@ -30,7 +30,7 @@ export function Department() {
     }
 
     return (<>
-        <button className="btn btn-primary"><Link style={{ color: "white", textDecoration: "none" }} to="/addDepartment">Add department</Link> </button>
+        <button className="btn btn-primary" style={{marginLeft:"10px"}}><Link style={{ color: "white", textDecoration: "none" }} to="/addDepartment">Add department</Link> </button>
         <table className="table">
             <thead>
                 <tr>
