@@ -23,7 +23,10 @@ export function AddDepartment() {
     async function clickHandler(e) {
         e.preventDefault();
         let obj = { name: departname, description: description };
-        await addnewDepartment(obj)
+        await addnewDepartment(obj).then(res => {
+            console.log(res.data)
+            console.log(res)
+        })
         navigator("/departments")
 
     }
