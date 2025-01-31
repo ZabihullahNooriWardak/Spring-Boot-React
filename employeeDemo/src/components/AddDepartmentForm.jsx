@@ -36,8 +36,16 @@ export function AddDepartment() {
         }
 
     }
+
+    function selectName(){
+        if(id){
+            return     <p>update department Form</p>
+        }else {
+            return     <p>Adding department Form</p>
+        }
+    }
     return (<>
-        <p>Adding department Form</p>
+    {selectName()}
 
         <form>
             <label>name of department</label>
