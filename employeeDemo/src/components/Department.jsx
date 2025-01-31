@@ -26,21 +26,32 @@ export function Department() {
     }
 
     function updateHandler(id) {
-   navigator(`/updateDepartment/${id}`)
+        navigator(`/updateDepartment/${id}`)
     }
 
     return (<>
-        <div>
-            <button><Link to="/addDepartment">Add department</Link> </button>
-            {department.map(department => (
-                <div key={department.id}>
-                    <p>{department.id}</p>
-                    <p>{department.name}</p>
-                    <p>{department.description}</p>
-                    <button onClick={() => updateHandler(department.id)}>update</button>
-                    <button onClick={() => deleteHandler(department.id)}>delete</button>
-                </div>
-            ))}
-        </div>
+        <button className="btn btn-primary"><Link style={{ color: "white", textDecoration: "none" }} to="/addDepartment">Add department</Link> </button>
+        <table className="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {department.map(department => (
+                    <tr key={department.id}>
+                        <th scope="row">{department.id}</th>
+                        <td>{department.name}</td>
+                        <td>{department.description}</td>
+                        <td><button className="mr-5" onClick={() => updateHandler(department.id)}>update</button>
+                            <button onClick={() => deleteHandler(department.id)}>delete</button></td>
+
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     </>)
 }
