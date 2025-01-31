@@ -12,10 +12,14 @@ export function NavBar() {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-          <Link className="nav-link" to="/newEmployee">NewEmployee</Link>
+            <Link className="nav-link" to="/newEmployee">NewEmployee</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/departments">Department</Link>
+          </li>
+          <li className="nav-item">
+
+            <Link className="nav-line" to="/addDepartment">Add department</Link>
           </li>
         </ul>
       </div>

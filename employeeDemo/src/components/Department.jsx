@@ -46,8 +46,8 @@ export function Department() {
                         <th scope="row">{department.id}</th>
                         <td>{department.name}</td>
                         <td>{department.description}</td>
-                        <td><button className="mr-5" onClick={() => updateHandler(department.id)}>update</button>
-                            <button onClick={() => deleteHandler(department.id)}>delete</button></td>
+                        <td><button className="btn btn-primary" style={{marginRight:"5px"}} onClick={() => updateHandler(department.id)}>update</button>
+                            <button className="btn btn-danger" onClick={() => deleteHandler(department.id)}>delete</button></td>
 
                     </tr>
                 ))}
