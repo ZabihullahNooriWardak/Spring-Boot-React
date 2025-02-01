@@ -13,6 +13,6 @@ public class EmployeeDto {
     private String name ;
     private String lastName;
     private String email;
-    private Department department;
+    private Long departmentId;
 
 }

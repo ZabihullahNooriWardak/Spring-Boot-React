@@ -23,6 +23,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+        try {
+
+            Department department = departmentRepository.findById(employeeDto.getDepartmentId())
+                    .orElseThrow(() -> new Exception("not Found"));
+        } catch (Exception e) {
+            System.err.println(e);
+        }
 
         Employee savedEmployee = EmployeeMapper.employeeDtoToEntity(employeeDto);
         Employee employee = employeeRepository.save(savedEmployee);
@@ -47,7 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee();
         Department department = new Department();
         try {
-            department = departmentRepository.findById(employeeDto.getDepartment().getId())
+            department = departmentRepository.findById(employeeDto.getDepartmentId())
                     .orElseThrow(() -> new Exception("not found"));
             employee = employeeRepository.findById(id).orElseThrow(() -> new Exception());
         } catch (Exception e) {
