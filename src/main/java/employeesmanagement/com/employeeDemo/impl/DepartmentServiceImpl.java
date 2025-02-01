@@ -12,11 +12,10 @@ import employeesmanagement.com.employeeDemo.mapper.DepartmentMapper;
 import employeesmanagement.com.employeeDemo.repository.DepartmentRepository;
 import employeesmanagement.com.employeeDemo.service.DepartmentService;
 
-
 @Service
 
 public class DepartmentServiceImpl implements DepartmentService {
- @Autowired
+    @Autowired
     DepartmentRepository departmentRepository;
 
     @Override
@@ -43,8 +42,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentDto createDepartment(DepartmentDto departmentDto) {
         Department department = DepartmentMapper.departmentDtoToEntity(departmentDto);
-       Department department2 = departmentRepository.save(department);
-        return DepartmentMapper.departmentEntityToDto(department2) ;
+        Department department2 = departmentRepository.save(department);
+        return DepartmentMapper.departmentEntityToDto(department2);
 
     }
 
@@ -61,7 +60,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void deleteDepartment(Long id) {
-         departmentRepository.deleteById(id);
+        departmentRepository.deleteById(id);
     }
 
 }

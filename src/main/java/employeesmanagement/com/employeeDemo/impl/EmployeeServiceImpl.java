@@ -29,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto getEmployee(Long id) {
-        Employee employee = null;
+        Employee employee = new Employee();
         try {
             employee = employeeRepository.findById(id).orElseThrow(() -> new Exception());
         } catch (Exception e) {
