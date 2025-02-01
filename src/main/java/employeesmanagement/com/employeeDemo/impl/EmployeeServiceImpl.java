@@ -6,16 +6,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import employeesmanagement.com.employeeDemo.dto.EmployeeDto;
+import employeesmanagement.com.employeeDemo.entity.Department;
 import employeesmanagement.com.employeeDemo.entity.Employee;
 import employeesmanagement.com.employeeDemo.mapper.EmployeeMapper;
+import employeesmanagement.com.employeeDemo.repository.DepartmentRepository;
 import employeesmanagement.com.employeeDemo.repository.EmployeeRepository;
 import employeesmanagement.com.employeeDemo.service.EmployeeService;
 
-
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-        @Autowired
+    @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    DepartmentRepository departmentRepository;
 
     @Override
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
@@ -40,8 +44,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto updateEmployee(EmployeeDto employeeDto, Long id) {
-        Employee employee = null;
+        Employee employee = new Employee();
+        Department department = new Department();
         try {
+            department = departmentRepository.findById(employeeDto.getDepartment().getId())
+                    .orElseThrow(() -> new Exception("not found"));
             employee = employeeRepository.findById(id).orElseThrow(() -> new Exception());
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,6 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setName(employeeDto.getName());
         employee.setEmail(employeeDto.getEmail());
         employee.setLastName(employeeDto.getLastName());
+        employee.setDepartment(department);
         return EmployeeMapper.employeeEntityToDto(employeeRepository.save(employee));
 
     }
