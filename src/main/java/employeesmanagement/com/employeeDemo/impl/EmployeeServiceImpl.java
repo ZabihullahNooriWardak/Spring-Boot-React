@@ -23,16 +23,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+        Department department = new Department();
         try {
 
-            Department department = departmentRepository.findById(employeeDto.getDepartmentId())
+             department = departmentRepository.findById(employeeDto.getDepartmentId())
                     .orElseThrow(() -> new Exception("not Found"));
         } catch (Exception e) {
             System.err.println(e);
         }
 
         Employee savedEmployee = EmployeeMapper.employeeDtoToEntity(employeeDto);
+        savedEmployee.setDepartment(department);
         Employee employee = employeeRepository.save(savedEmployee);
+
 
         return EmployeeMapper.employeeEntityToDto(employee);
 

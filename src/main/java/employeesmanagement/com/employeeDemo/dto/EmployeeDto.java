@@ -1,6 +1,5 @@
 package employeesmanagement.com.employeeDemo.dto;
 
-import employeesmanagement.com.employeeDemo.entity.Department;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
